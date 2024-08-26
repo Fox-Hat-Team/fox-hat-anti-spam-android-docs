@@ -21,7 +21,7 @@ implementation files('libs/FoxHatAntiSpam.aar')
 
 # Initializing FoxHat AntiSpam
 
-Now that you have integrated the FoxHat AntiSpam SDK into your project, you can initialize it with your API key.
+Now that you have integrated the FoxHat AntiSpam SDK into your project.
 Emulator and Root Detection enabled by default
 
 ```java
@@ -45,13 +45,19 @@ To add the _foxhat header to your API requests, you need to use the challenge pr
 ```java
 import okhttp3.Interceptor
 import okhttp3.Request
-val challenge = FoxHatAntiSpam.getFoxHatAntiSpam().challenge().toString()
 val headerInterceptor = Interceptor { chain ->
     val original: Request = chain.request()
+    
+    val token = FoxHat.getFoxHat().token()?.let { token -> 
+        token
+    } ?: ""
+
     val request: Request = original.newBuilder()
-        .header("_foxhat", challenge)
+        .header("_foxhat", challenge) 
+        .header("X-FoxHat", "Bearer $token")
         .method(original.method(), original.body())
         .build()
+
     chain.proceed(request)
 }
 ```
