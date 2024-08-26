@@ -28,12 +28,28 @@ Emulator and Root Detection enabled by default
 class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-          FoxHat.initialize(
-                        this,
-                        false, //debugMode
-                        false,//testMode
-                        true  //forceMode
-                    )
+         /**
+         * FoxHat.initialize:
+         *
+         * @param apiKey 32-bit API key required for authentication. The API key is a unique identifier for your app.
+         * @param ivKey 16-bit initialization vector (IV) key used for encryption processes.
+         * @param context The application context to be used for the initialization process.
+         * @param debugMode A Boolean flag for enabling or disabling debug logs. 
+         *                  Set to `false` in production for better performance and cleaner logs.
+         * @param testMode A Boolean flag for enabling test mode. When set to `true`, the SDK will operate in a test environment.
+         * @param forceMode A Boolean flag for forcing certain behaviors. 
+         *                  Set to `true` to enable force mode, which overrides specific configurations.
+         */
+        FoxHat.initialize(
+            "89012335678901234567890123456712",  // 32-bit API key
+            "7890123456123456",                 // 16-bit IV key
+            this,                               // Application context
+            false,                              // Disable debug mode
+            false,                              // Disable test mode
+            true                                // Enable force mode
+        )
+ 
+
     }
 }
 ```
