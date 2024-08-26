@@ -53,7 +53,6 @@ val headerInterceptor = Interceptor { chain ->
     } ?: ""
 
     val request: Request = original.newBuilder()
-        .header("_foxhat", challenge) 
         .header("X-FoxHat", token)
         .method(original.method(), original.body())
         .build()
