@@ -41,8 +41,8 @@ class BaseApplication : Application() {
          *                  Set to `true` to enable force mode, which overrides specific configurations.
          */
         FoxHat.initialize(
-            "89012335678901234567890123456712",  // 32-bit API key
-            "7890123456123456",                 // 16-bit IV key
+            Secrets().getYourSecretKey32(packageName),  // 32-bit key
+            Secrets().getYourSecretKey16(packageName),                 // 16-bit IV key
             this,                               // Application context
             false,                              // Disable debug mode
             false,                              // Disable test mode
