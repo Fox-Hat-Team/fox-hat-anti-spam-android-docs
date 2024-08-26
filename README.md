@@ -30,9 +30,9 @@ class BaseApplication : Application() {
         super.onCreate()
           FoxHat.initialize(
                         this,
-                        true,
-                        false,
-                        false
+                        true, //debugMode
+                        false,//testMode
+                        true  //forceMode
                     )
     }
 }
