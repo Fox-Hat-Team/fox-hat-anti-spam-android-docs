@@ -28,10 +28,12 @@ Emulator and Root Detection enabled by default
 class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        FoxHatAntiSpam.initialize(
-            "YOUR_API_KEY",
-            this
-        )
+          FoxHat.initialize(
+                        this,
+                        true,
+                        false,
+                        false
+                    )
     }
 }
 ```
