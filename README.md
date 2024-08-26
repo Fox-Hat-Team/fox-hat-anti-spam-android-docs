@@ -16,7 +16,7 @@ This guide will explain how to integrate FoxHat AntiSpam into your Android appli
 2. Open your `build.gradle` file (usually located in the `app` module) and add the following dependency:
 
 ```gradle
-implementation files('libs/FoxHatAntiSpam.aar')
+implementation files('libs/FoxHat.aar')
 ```
 
 # Initializing FoxHat AntiSpam
