@@ -43,8 +43,8 @@ class BaseApplication : Application() {
          *                  Set to `true` to enable force mode, which overrides specific configurations.
          */
         FoxHat.initialize(
-            Secrets().getYourSecretKey32(packageName),  // 32-bit key use  Hidden Secrets Gradle Plugin 
-            Secrets().getYourSecretKey16(packageName),                 // 16-bit IV key use  Hidden Secrets Gradle Plugin 
+            Secrets().getYourSecretKey32(packageName),  // 32-bit API key from Hidden Secrets
+            Secrets().getYourSecretKey16(packageName),  // 16-bit IV key from Hidden Secrets
             this,                               // Application context
             false,                              // Disable debug mode
             false,                              // Disable test mode
