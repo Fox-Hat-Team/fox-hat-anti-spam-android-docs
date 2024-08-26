@@ -18,6 +18,8 @@ This guide will explain how to integrate FoxHat AntiSpam into your Android appli
 ```gradle
 implementation files('libs/FoxHat.aar')
 ```
+# Install Hidden Secrets Gradle Plugin
+   Use the [Hidden Secrets Gradle Plugin](https://github.com/klaxit/hidden-secrets-gradle-plugin) to securely store sensitive data such as API keys. Follow the instructions on their [GitHub page](https://github.com/klaxit/hidden-secrets-gradle-plugin) to set it up:
 
 # Initializing FoxHat AntiSpam
 
