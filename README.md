@@ -33,8 +33,7 @@ class BaseApplication : Application() {
          /**
          * FoxHat.initialize:
          *
-         * @param apiKey 32-bit API key required for authentication. The API key is a unique identifier for your app.
-         * @param ivKey 16-bit initialization vector (IV) key used for encryption processes.
+      
          * @param context The application context to be used for the initialization process.
          * @param debugMode A Boolean flag for enabling or disabling debug logs. 
          *                  Set to `false` in production for better performance and cleaner logs.
@@ -43,8 +42,6 @@ class BaseApplication : Application() {
          *                  Set to `true` to enable force mode, which overrides specific configurations.
          */
         FoxHat.initialize(
-            Secrets().getYourSecretKey32(packageName),  // 32-bit API key from Hidden Secrets
-            Secrets().getYourSecretKey16(packageName),  // 16-bit IV key from Hidden Secrets
             this,                               // Application context
             false,                              // Disable debug mode
             false,                              // Disable test mode
@@ -61,14 +58,19 @@ class BaseApplication : Application() {
 To add the _foxhat header to your API requests, you need to use the challenge provided by FoxHat AntiSpam. Here's how to do it:
 
 ```java
+   * @param apiKey 32-bit API key required for authentication. The API key is a unique identifier for your app.
+   * @param ivKey 16-bit initialization vector (IV) key used for encryption processes.
 import okhttp3.Interceptor
 import okhttp3.Request
 val headerInterceptor = Interceptor { chain ->
     val original: Request = chain.request()
     
-    val token = FoxHat.getFoxHat().token()?.let { token -> 
-        token
-    } ?: ""
+   val token = FoxHat.getFoxHat().token(
+                        "32-bit",
+                        "16-bit",
+                    )?.let { token ->
+                        token
+                    } ?: ""
 
     val request: Request = original.newBuilder()
         .header("X-FoxHat", token)
