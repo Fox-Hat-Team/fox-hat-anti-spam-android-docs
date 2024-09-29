@@ -65,10 +65,7 @@ import okhttp3.Request
 val headerInterceptor = Interceptor { chain ->
     val original: Request = chain.request()
     
-   val token = FoxHat.getFoxHat().token(
-                        "32-bit",
-                        "16-bit",
-                    )?.let { token ->
+   val token = FoxHat.getFoxHat().token()?.let { token ->
                         token
                     } ?: ""
 
